@@ -2,7 +2,8 @@ import {  apiConnection} from "./apiConnection.js";
 
 const lista = document.querySelector("[data-lista]")
 
-function crearCard(titulo,descripcion,url,imagen){
+//function crearCard(titulo,descripcion,url,imagen){
+export default function crearCard(titulo,descripcion,url,imagen){
 	const video = document.createElement("li");
 	video.className="videos__item";
 	video.innerHTML=`<li class="videos__item">
