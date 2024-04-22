@@ -7,8 +7,25 @@ async function listarVideos(){
 	return connectionConvert
 }
 
+async function crearVideo(titulo,descripcion,url,imagen){
+    const connection = await fetch('http://localhost:3001/videos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            titulo: titulo,
+            descripcion: descripcion,
+            url: url,
+            imagen: imagen
+        })
+    })
+    const connectionConvert = connection.json();
+
+    return connectionConvert;
+}
+
 export const apiConnection={
-	listarVideos
+	listarVideos,crearVideo
 }
 
 //listarVdeos();
