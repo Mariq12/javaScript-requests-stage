@@ -31,10 +31,14 @@ export default function crearCard(titulo,descripcion,url,imagen){
 	return video;
 }
 
-async function listarVideos(){
-	const listaAPI = await apiConnection.listarVideos()
-	
-	listaAPI.forEach(video=>lista.appendChild(crearCard(video.titulo,video.descripcion,video.url,video.imagen)))
+async function listaVideos() {
+    try{
+        const listaAPI = await apiConnection.listarVideos();
+        listaAPI.forEach(element => lista
+            .appendChild(crearCard(element.titulo, element.descripcion, element.url, element.imagen)));
+    }catch{
+        lista.innerHTML=`<h2 class="mensaje__titulo">No fue posible cargar la lista de videos</h2>`;
+    }
 }
 
-listarVideos()
+listaVideos();
