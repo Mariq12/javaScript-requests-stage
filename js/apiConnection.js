@@ -27,12 +27,35 @@ async function enviarVideo(titulo,descripcion,url,imagen){
     return connectionConvert;
 }
 
-async function buscarVideo(palabraClave){
-    const connection = await fetch(`http://localhost:3001/videos?q=${palabraClave}`);
+async function buscarVideo(palabraClave) {
+    const url = `http://localhost:3001/videos/${palabraClave}`;
+    console.log(url);
+    try {
+        const response = await fetch(url);
+        console.log(response);
+
+        if (!response.ok) {
+            // Manejar errores de respuesta no exitosa (404 u otros códigos de error)
+            throw new Error(`Error al buscar video: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        // Capturar errores de red u otros errores de fetch
+        console.error('Error en la búsqueda de video:', error.message);
+        throw error; // Re-lanzar el error para que se maneje en el código que llama a esta función
+    }
+}
+
+
+/*async function buscarVideo(palabraClave){
+    const connection = await fetch(`http://localhost:3001/videos/${palabraClave}`);
+    console.log(connection)
     const connectionConvert = connection.json();
 	console.log(connectionConvert)
     return connectionConvert
-}
+}*/
 
 export const apiConnection={
 	listarVideos,enviarVideo,buscarVideo
