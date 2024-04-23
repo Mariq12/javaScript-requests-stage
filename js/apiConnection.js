@@ -20,6 +20,10 @@ async function enviarVideo(titulo,descripcion,url,imagen){
     })
     const connectionConvert = connection.json();
 
+    if(!connection.ok){
+        throw new Error("No es posible enviar el video");
+    }
+
     return connectionConvert;
 }
 
