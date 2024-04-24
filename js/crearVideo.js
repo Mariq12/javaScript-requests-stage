@@ -11,10 +11,6 @@ async function crearVideo(evento) {
     const imagen = document.querySelector("[data-imagen]").value;
     const descripcion = Math.floor(Math.random*10).toString();
 
-   // await apiConnection.enviarVideo(titulo,descripcion,url,imagen);
-
-    //window.location.href="../pages/envio-concluido.html";
-
     try{
         await apiConnection.enviarVideo(titulo,descripcion,url,imagen);
     
