@@ -40,17 +40,62 @@ Comando de teclado para agregar comillas invertidas:
 
 Para agregar video manualmente se debe considerar esta estructura de datos y de la url del video:
 
-,
+    ,
 
-    {
+        {
 
-      "titulo": "LA PELICULA COMPLETA DE - INTERCAMBIO DE PRINCESAS 2 EN ESPAÑOL LATINO | PELICULA NAVIDEÑA",
-      "descripcion": "5.58 K visualizaciones",
-      "url": "https://www.youtube.com/embed/cbfhLXk4-9I",
-      "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg",
-      "id": 12
-    
-    }
+        "titulo": "LA PELICULA COMPLETA DE - INTERCAMBIO DE PRINCESAS 2 EN ESPAÑOL LATINO | PELICULA NAVIDEÑA",
+        "descripcion": "5.58 K visualizaciones",
+        "url": "https://www.youtube.com/embed/cbfhLXk4-9I",
+        "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg",
+        "id": 12
+        
+        }
 
 "url": "https://www.youtube.com/embed/cbfhLXk4-9I",
 
+## Para buscar un video por el nombre:
+
+    const connection = fetch("http://localhost:3001/videos")
+
+    const videos = connection.json()
+
+----
+
+    const video_seleccionado = videos.filter(() => true)
+
+    const video_seleccionado = videos.filter(() => false)
+
+----
+
+    const video_seleccionado = videos.filter((video) => video.name === "un_nombre_cualquiera")
+
+----
+
+    [
+        {
+            "id": 1,
+            "name": "Primer nombre"
+        },
+        {
+            "id": 2,
+            "name": "Segundo nombre"
+        },
+        {
+            "id": 3,
+            "name": "Tercer nombre"
+        }
+    ]
+
+----
+
+    const videoSeleccionado = videos.filter((video) => video.name === "Primer nombre")
+
+---- 
+
+    [
+        {
+            "id": 1,
+            "name": "Primer nombre"
+        }
+    ]

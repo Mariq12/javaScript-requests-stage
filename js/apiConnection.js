@@ -49,6 +49,23 @@ async function buscarVideo(palabraClave) {
 }
 
 
+async function filtrar(nombre) {
+    try {
+        const videos = await listarVideos(); // Obtener la lista completa de videos
+
+        // Filtrar videos por título que contenga el nombre buscado (ignorar mayúsculas/minúsculas)
+        const videosFiltrados = videos.filter(video =>
+            video.titulo.toLowerCase().includes(nombre.toLowerCase())
+        );
+
+        return videosFiltrados; // Devolver el array de videos filtrados
+    } catch (error) {
+        console.error('Error al filtrar videos:', error.message);
+        throw error;
+    }
+}
+
+
 /*async function buscarVideo(palabraClave){
     const connection = await fetch(`http://localhost:3001/videos/${palabraClave}`);
     console.log(connection)
@@ -58,7 +75,7 @@ async function buscarVideo(palabraClave) {
 }*/
 
 export const apiConnection={
-	listarVideos,enviarVideo,buscarVideo
+	listarVideos,enviarVideo,buscarVideo,filtrar
 }
 
 //listarVdeos();
