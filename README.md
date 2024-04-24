@@ -34,9 +34,11 @@ ese identificador se coloca usando el patron *data-* y una palabra en este caso 
 Esto se lama data structure. Este es un elemento que permite individualizar o identificar los elementos existentes dentro del HTML y ser llamados dentro del archivo JS.
 `data-lista`
 
-Comando de teclado para agregar comillas invertidas:
+## Comando de teclado para agregar comillas invertidas
 
-` Ctrl + Alt + llave = `` `
+Se tiene precionado la tecla *Ctrl + Alt + llave* y como resultado se obtiene las comillass invertidas:
+
+` Ctrl + Alt + } = `` `
 
 Para agregar video manualmente se debe considerar esta estructura de datos y de la url del video:
 
@@ -99,3 +101,43 @@ Para agregar video manualmente se debe considerar esta estructura de datos y de 
             "name": "Primer nombre"
         }
     ]
+
+## Función para buscar dando enter 
+
+En el archivo `filtrarVideo.js`, este código: 
+
+    const inputEle = document.getElementById('buscar');
+    inputEle.addEventListener('keyup', function(e){
+        var key = e.which || e.keyCode;
+        if (key == 13) { 
+            filtrarVideo(e)
+        }
+    });
+
+Permite la activación de la función filtrarVideo cuando el usuario presiona "Enter" en el campo de búsqueda.
+
+## Para agregar Vite al proyecto
+
+### Primero ejecutar el comando
+
+    npm install -D
+
+### En el archivo `package.json` agregar el script debajo de `main`
+
+    "scripts": {
+        "db": "npx json-server --watch db.json --port 3001",
+        "dev": "vite"
+    }
+
+### Ejecutar el comando 
+
+Para levantar db.json y el servidor
+
+    npm run db
+
+----
+
+Para levantar el proyecto con vite
+
+    npm run dev
+
